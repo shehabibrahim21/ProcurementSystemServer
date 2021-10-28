@@ -1,0 +1,490 @@
+    
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  id = "modal-dialog-id2" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create PPMP</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <div class ="inline-div"><b> Cost  Center :</b> &nbsp; <input type="text" id="country" name="country1" value="{{ cc_code }}" readonly size = "10">
+            <input type="text" id="country2" name="country" value="{{ cc_name }}" readonly size = "35"></div>
+
+        <div class ="inline-div">
+
+        <button type="submit" value="Update" class="button-formal" >
+            <a href="{% url 'PPMP:ppmp' parameter=3%}" ><font color="white">Summary </font></a></button> &nbsp; 
+        <button type="submit" value="Update" class="button-formal" >
+            <a href="{% url 'PPMP:edit_ppmp' parameter=3%}" ><font color="white">Edit PPMP </font></a></button>  &nbsp;  
+        <button type="submit" value="Update" class="button-formal" >
+            <a href="{% url 'PPMP:print_ppmp' parameter=3%}" ><font color="white">Print PPMP </font></a></button>  &nbsp;  
+
+        <button type="submit" value="Update" class="button-formal" >
+            <a href="{% url 'PPMP:cost_center_modal_one' parameter=99999999%}" ><font color="white">Back to PPMP Selection </font></a></button>  &nbsp;  </div>
+ <!--           
+        <button type="submit" value="Update" class="button-formal" >
+            <a href="{% url 'PPMP:ppmp' parameter=3%}" ><font color="white">Lock </font></a></button>
+            
+        <button type="submit" value="Update" class="button-formal" >
+            <a href="{% url 'PPMP:ppmp' parameter=3%}" ><font color="white">Clear</font></a></button>
+
+    -->
+            
+               
+
+        <br/>
+        <div class ="inline-div"> <b>Fund Source : </b>	<input type="text" id="country3" name="country" value="{{ fs_name }}" readonly size = "10">
+                                <b>Year: </b><input type="text" id="country4" name="country" value="{{ yr }}" readonly size = "10">
+                                <b>Type: </b><input type="text" id="country5" name="country" value="{{ type }}" readonly size = "10">
+
+                                 </div>
+    
+        <div class ="inline-div">
+            
+        <button type="submit" value="Update" class="button-formal" >
+        <a href="{% url 'PPMP:extend_modal_four' parameter=3%}" ><font color="white">Suggest Item </font></a></button>
+            
+        <button type="submit" value="Update" class="button-formal" >
+        <a href="{% url 'PPMP:ppmp' parameter=3%}" ><font color="white">Lock </font></a></button>
+            
+        </div>
+        <br/>
+        <div class = "inline-div"> 
+            <b> Remarks :  </b> &nbsp; &nbsp; &nbsp; <input type="text" id="country" name="country6" value="{{ type }}" readonly size = "50">
+
+
+        </div>	
+    
+
+        <script>
+            var items_categories = "{{categories}}";
+            var all_items = "{{all_items}}";
+            var lst = "{{lst}}";
+            var all_items_price = "{{all_items_price}}";
+            
+        </script>
+
+
+    <br/>  
+        <div class = "inline-div"> 
+
+            <form  method="POST"  action="{% url 'PPMP:change_category_modal_three' parameter=999994%}" >	
+                {% csrf_token %}	
+                {{ categoryform }}
+                <button type="submit" value="Update" class="button-formal">Update</button>
+                </form>
+            </div>  {% if show %}
+            <div class = "inline-div"> 
+            <b> Category Code :  </b><input type="text" id="country" name="country" value="{{cat_code }}" readonly size = "10">
+          
+            </div>
+            <div class = "inline-div" >	
+          
+                <form method="post"  autocomplete="off" action="{% url 'PPMP:change_category_create_ppmp' parameter=9999931%}">
+                    {% csrf_token %}	
+                    {{ catform }}
+                            
+                      <button type="submit" value="Submit" class="button-formal">Select Category</button>
+                         
+                      </form> 
+                     
+            </div>
+            {% endif %}
+            {% if with_gen %}
+            test222
+            {% endif %}
+            {% if with_categories %}
+           
+            <div class="table100 ver4 m-b-110" >
+                <table data-vertable="ver4" class = "table_ppmp">
+                    <thead>
+                        <tr class="row100_ppmp head">
+                            <th class="column101 column11" colspan="3" >Item</th>
+                            <th class="column101 column22" colspan="2">Unit Details</th>
+                            <th class="column101 column44" colspan="2">1st Quarter</th>
+                            <th class="column101 column44" colspan="2">2nd Quarter</th>
+                            <th class="column101 column44" colspan="2" >3rd Quarter</th>
+                            <th class="column101 column44" colspan="2">4th Quarter</th>									
+                        </tr>
+
+                        <tr class="row100_ppmp1 head">
+                            <th class="column102 column66" >Code</th>
+                            <th class="column102 column88" >S</th>
+                            <th class="column102 column55" >Description</th>
+                            <th class="column102 column77" >Unit</th>
+                            <th class="column102 column77" >Unit Price</th>
+                            <th class="column102 column77" >Qty</th>
+                            <th class="column102 column77" >Amount</th>	
+                            <th class="column102 column77" >Qty</th>
+                            <th class="column102 column77" >Amount</th>
+                            <th class="column102 column77" >Qty</th>
+                            <th class="column102 column77" >Amount</th>
+                            <th class="column102 column77" >Qty</th>
+                            <th class="column102 column77" >Amount</th>									
+                        </tr>
+
+
+                    </thead>
+                    <tbody class = "tbody1">
+                        {% for item in lst_god %}
+
+                        <tr class="row100">
+                            <td class="column101 column66">
+                                    {{ item.0}}</td>
+                            <td class="column101 column42">
+                                <a href="{% url 'PPMP:edit_items_modal_three' parameter=item.0%}"  ><font size = "4">
+                                        +</font></a></td>			
+                        <td class="column101 column55">
+                                    {{ item.1}}</td>
+                        <td class="column101 column77" >
+                            {{ item.2}}</td>
+                        <td class="column101 column77" >
+                            {{ item.3}}</td>
+                        <td class="column101 column77" >
+                            {{ item.4}}</td>
+                        <td class="column101 column77" >
+                            {{ item.5}}</td>
+                        <td class="column101 column77" >
+                            {{ item.6}}</td>
+                        <td class="column101 column77" >
+                            {{ item.7}}</td>
+                        <td class="column101 column77" >
+                            {{ item.8}}</td>
+                        <td class="column101 column77" >
+                            {{ item.9}}</td>
+                        <td class="column101 column77" >
+                            {{ item.10}}</td>
+                        <td class="column101 column99">
+                            {{ item.11}}</td>
+                    </tr>
+                 
+                        {% endfor %}
+            <tr class="row100"><td class="column101 column66"></td><td class="column101 column42"></td>
+            <td class="column101 column54" id = "item_description" data-id="0" data-type="item_description" ></td>
+             <td class="column101 column77" id ="unit" ></td><td class="column101 column77" id ="unit_price"></td>
+            <td class="column101 column88" id = "fq_qty" data-type="fq_qty" ></td><td class="column101 column77" id ="fq_amt" ></td>
+            <td class="column101 column88" id="sq_qty"  data-type="sq_qty" ></td>
+            <td class="column101 column77" id ="sq_amt"></td><td class="column101 column88" id ="tq_qty" data-type="tq_qty" ></td><td class="column101 column77" id ="tq_amt" ></td>
+            <td class="column101 column88" id ="frq_qty" data-type="frq_qty" ></td><td class="column101 column99" id ="frq_amt" ></td></tr>
+                    
+
+                    
+                    </tbody>
+                </table>
+
+                <div class ="inline-div">
+                     {% if show %}
+                   
+                    <form method="post" class = "inline-div"  autocomplete="off" action="{% url 'PPMP:savedetails' parameter=9999911%}">
+                        {% csrf_token %}
+                        <button type="submit" value="Submit" class="button-formal">Save</button></form> 
+
+                
+                     {% endif %}
+                    <form method="post" class = "inline-div"  autocomplete="off" action="{% url 'PPMP:ppmp' parameter=9999911%}">
+                        {% csrf_token %}
+                        <button type="submit" value="Submit" class="button-formal">Back</button></form> 
+
+
+                            </div>
+                
+                {% endif %}
+           
+    
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<script>
+    jQuery(function(){
+    
+    jQuery('a.add_row').click(function(event){
+
+        event.preventDefault();
+
+        var newRow = jQuery('<tr class="row100"><td class="column101 column66"></td><td class="column101 column88"></td>\n\
+            <td class="column101 column99" id = "item_description" data-id="0" data-type="item_description" ></td>\n\
+             <td class="column101 column77" id ="unit" ></td><td class="column101 column77" id ="unit_price"></td>\n\
+            <td class="column101 column88" id = "fq_qty" data-type="fq_qty" ></td><td class="column101 column77" id ="fq_amt" ></td>\n\
+            <td class="column101 column88" id="sq_qty"  data-type="sq_qty" ></td>\n\
+            <td class="column101 column77" id ="sq_amt"></td><td class="column101 column88" id ="tq_qty" data-type="tq_qty" ></td><td class="column101 column77" id ="tq_amt" ></td>\n\
+            <td class="column101 column88" id ="frq_qty" data-type="frq_qty" ></td><td class="column101 column99" id ="frq_amt" ></td></tr>');
+            
+        jQuery('table.table_ppmp').append(newRow);
+    });
+});
+</script>-->
+{% block custom_js %}
+    <script>
+    var price;
+        $(document).ready(function(){
+            $(document).on("dblclick",".column101.column54",function(){
+                var value=$(this).text();
+                var data_type=$(this).data("type");
+                var input_type="text";
+                    
+                var input="<input type='"+input_type+"' class='input-data' value='"+value+"' class='form-control' size='50'>";
+                $(this).html(input);
+                $(this).removeClass(".column101.column54")
+//                console.log("test")
+                autocomplete1(document.getElementsByClassName("input-data")[0],list_gen);
+                document.getElementById("unit").innerHTML = "";
+                document.getElementById("unit_price").innerHTML = "";
+            });
+
+            $(document).on("keypress",".input-data",function(e){
+                var key=e.which;
+                if(key==13){
+                   
+                    var value=$(this).val();
+                    var td=$(this).parent("td");
+
+
+                   var type=td.data("type");
+                   if (type == "item_description"){
+                       
+                    $(this).remove();
+                    td.html(value);
+                    td.addClass(".column101.column54");
+                    price = searchPrice(list2, value)
+                    console.log(price)
+                    document.getElementById("unit").appendChild(document.createTextNode(searchUnit(list2, value)));
+                    document.getElementById("unit_price").appendChild(document.createTextNode(price));
+                    }
+//                   console.log(type)
+                 //  sendToServer(td.data("id"),value,type);
+                }
+            });
+
+            function sendToServer(id,value,type){
+                console.log(id);
+                console.log(value);
+                console.log(type);
+                $.ajax({
+                    url:"http://localhost:8000/saveorderdetails/",
+                    type:"POST",
+                    data:{id:id,type:type,value:value},
+                })
+                .done(function(response){
+                    console.log(response);
+                })
+                .fail(function(){
+                   console.log("Error Occured");
+                });
+
+            }
+        });
+        
+        $(document).ready(function(){
+            $(document).on("dblclick",".column101.column88",function(){
+                var value=$(this).text();
+                var data_type=$(this).data("type");
+                var input_type="text";
+
+                var input="<input type='"+input_type+"' class='input-data' value='"+value+"' class='form-control' size='10'>";
+                $(this).html(input);
+                $(this).removeClass(".column101.column88")
+
+            });
+
+            $(document).on("keypress",".input-data",function(e){
+                var key=e.which;
+                if(key==13){
+                   
+                    var value=$(this).val();
+                    var td=$(this).parent("td");
+                   
+//                    var price = searchPrice(list2, value)
+//                    document.getElementById("unit").appendChild(document.createTextNode(searchUnit(list2, value)));
+//                    document.getElementById("unit_price").appendChild(document.createTextNode(price));
+                   var type=td.data("type");
+                   console.log(type)
+                   if ((type == 'fq_qty') || (type == 'sq_qty') || (type == 'tq_qty') || (type == 'frq_qty') ){
+                   $(this).remove();
+                    td.html(value);
+                    td.addClass(".column101.column88");
+                   
+                    value_item_description = document.getElementById('item_description').innerHTML
+                    sendToServerDes(value,value_item_description,type)
+                    
+                    }
+                }
+            });
+
+            function sendToServerDes(value,value_des,type){
+                console.log(value_des);
+                console.log(value);
+                console.log(type);
+                $.ajax({
+                    url:"http://localhost:8000/saveorderdetails/",
+                    type:"POST",
+                    data:{value:value,value_des:value_des,type:type},
+                })
+                .done(function(response){
+                    console.log(response);
+                })
+                .fail(function(){
+                   console.log("Error Occured");
+                });
+
+            }
+        });
+        
+        
+    </script>
+{% endblock custom_js %}
+
+<script>
+
+function autocomplete1(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    console.log(inp)
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+
+        for (i = 0; i < arr.length; i++) {
+          var list_string = arr[i].toUpperCase().split('');                  
+          var list_string_val = val.toUpperCase().split('');
+                  
+          /*check if the item starts with the same letters as the text field value:*/
+          res = list_string_val.every(function(val) {
+                return list_string.indexOf(val) >= 0;
+            });
+//          if (element.toUpperCase().includes(val_element.toUpperCase())){
+//          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            if (res){
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML =  arr[i].substr(0, val.length);
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } 
+        else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+//          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  }
+    
+  var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+  
+  var list_gen = [];
+//  console.log(all_items)
+  var list1 = all_items.split("   ");
+  list_gen = list1.filter(function(item, pos) { 
+      return list1.indexOf(item) == pos;
+  })
+//  
+//  
+   
+  var list_all= [];
+//  console.log(all_items)
+  var list2 = all_items_price.split("   ");
+  list_all = list2.filter(function(item, pos) { 
+      return list2.indexOf(item) == pos;
+  })
+//console.log(all_items_price)
+
+  function searchPrice(lst, item){
+  
+    for (i = 0; i < lst.length; i++) {
+        if (item == lst[i]){
+            return lst[i+1];
+            break;
+        }
+            
+    }
+  }
+    function searchUnit(lst, item){
+  
+    for (i = 0; i < lst.length; i++) {
+        if (item == lst[i]){
+            return lst[i+2];
+            break;
+        }
+            
+    }
+  }
+</script>

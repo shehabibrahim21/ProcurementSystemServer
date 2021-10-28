@@ -1,0 +1,121 @@
+<script>
+    var generics = "{{generics}}";
+    var specifics = "{{specifics}}";
+
+</script>
+
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  id = "modal-dialog-id4" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Items</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+            <div class = "inline-div" >	
+
+                <form method="post"  class = "inline-div" autocomplete="off" action="{% url 'PPMP:insert_order_temporary_details' parameter=9999971%}">
+                    {% csrf_token %}
+                    General Name:
+                     <br/>
+            
+                    <div>{{ searchitemform }}</div>
+                
+                    
+                    <br/>
+                    Specifications:
+                    <div>{{ specifics1}}</div>
+                    <div>{{ specifics2}}</div>
+                    <div>{{ specifics3}}</div>
+                    <div>{{ specifics4}}</div>
+                    <div>{{ specifics5}}</div>
+        
+
+                    <br/>	
+
+            
+                Suggest a Price for the item: {{ price_suggested}}
+                <br/><br/>
+                Suggest a unit for the item: &nbsp;&nbsp;&nbsp;{{unit_suggested}}
+                <br/><br/>
+                 <b>Quantity Per Quarter:</b>
+                 <br/><br/>
+                <div class = "inline-div" >	
+                First Quarter<br/>
+                <div class="value-button" id="increase" onclick="increaseValue1()" value="Increase Value">+</div>
+            
+                {{quarter1}}
+                
+                <div class="value-button" id="decrease" onclick="decreaseValue1()" value="Decrease Value">-</div>
+                </div>
+            
+                <div class = "inline-div" >	
+                Second Quarter<br/>
+                <div class="value-button" id="increase" onclick="increaseValue2()" value="Increase Value">+</div>
+                {{quarter2}}
+
+                <div class="value-button" id="decrease" onclick="decreaseValue2()" value="Decrease Value">-</div>
+                </div>
+        
+                <div class = "inline-div" >	
+                Third Quarter<br/>
+                <div class="value-button" id="increase" onclick="increaseValue3()" value="Increase Value">+</div>
+                {{quarter3}}
+
+                <div class="value-button" id="decrease" onclick="decreaseValue3()" value="Decrease Value">-</div>
+                </div>
+    
+                <div class = "inline-div" >	
+                Fourth Quarter<br/>
+                <div class="value-button" id="increase" onclick="increaseValue4()" value="Increase Value">+</div>
+                {{quarter4}}
+
+                <div class="value-button" id="decrease" onclick="decreaseValue4()" value="Decrease Value">-</div>
+                </div>
+
+
+
+        
+                <input type="hidden" id="result1" value= {{initial}}/>
+
+    
+                <input type="hidden" id="result2" value= {{initial}}/>
+            
+                <input type="hidden" id="result3" value= {{initial}}/>
+            
+            
+                <input type="hidden" id="result4" value= {{initial}}/>
+        
+
+                <input type="hidden" id="number1" value= {{price}} />
+      
+                <br/>  <br/>
+                <button type="submit" value="Submit" class="button-formal">Save</button>
+                         
+                </form>     
+
+          </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_generics.js' %}"></script>
+
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_specifics1_.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_specifics2_.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_specifics3_.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_specifics4_.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_specifics5_.js' %}"></script>
+

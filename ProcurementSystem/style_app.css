@@ -1,0 +1,104 @@
+.container {
+
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  float: left;
+position: relative;
+left: 30%;
+}
+
+ .table-style {
+   width: 100%;
+}
+
+.float_right {
+  display: inline-block;
+  float: right;
+}
+
+
+table, th, td {
+  border: 1px  solid black;
+   text-align:center;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#table_bottom
+{
+ border-collapse: collapse;
+  width: 100%;
+   border: 0px  solid white;
+    
+}
+#blank_row
+{
+  border: 0px  solid white;
+  text-align:center; 
+    
+}
+#blank
+{
+  border: 0px  solid white;
+  text-align:center; 
+    
+}
+tbody>tr>:nth-child(1){
+
+ width:8%;
+ text-align:center;
+}
+tbody>tr>:nth-child(2){
+
+ width:20%;
+ text-align:center;
+}
+tbody>tr>:nth-child(3){
+
+ width:8%;
+ text-align:center;
+}
+tbody>tr>:nth-child(4){
+
+ width:8%;
+ text-align:center;
+}
+tbody>tr>:nth-child(5){
+
+ width: 8%;
+ text-align:center;
+}
+tbody>tr>:nth-child(6){
+
+ width:15%;
+ text-align:center;
+}
+
+tbody>tr>:nth-child(7){
+
+ width:15%;
+ text-align:center;
+}
+tbody>tr>:nth-child(8){
+
+ width:15%;
+ text-align:center;
+}
+
+#bottom
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%
+    
+}
+#block{
+    width: 31%;
+    display: inline-block;
+}
+#signatories{
+  text-align:center;
+}

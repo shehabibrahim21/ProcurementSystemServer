@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sales Funnel Report - National</title>
+</head>
+<body>
+    <h3>MSU-Iligan Institute of Technology</h3><br/>
+    <h3>OFFICE OF THE BAC SECRETARIAT (OBS)</h3>
+    <h4><i> Tel. No. (063) 225-4926 </i></h4>
+    <br/>
+    <h3>PROJECT PROCUREMENT MANAGEMENT PLAN,{{ year }}</h3>
+    <h4>Cost Center: <u>{{ code }}</u> &nbsp;&nbsp;&nbsp;&nbsp; <u>{{ cost_center }}</u> </h4>
+    <h4>Source of Fund : <u> {{source_fund}} </u></h4>
+    <h4>PPMP ID : {{ppmp_id}}   &nbsp;&nbsp;&nbsp;&nbsp; {{type}} </h4>
+    <h4> Account Code: {{acc_code}} &nbsp;&nbsp;&nbsp;&nbsp; {{acc_name}} </h4>
+    
+    
+     <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>Unit</th>
+      <th>Unit Price</th>
+      <th>1st Quarter Quantity</th>
+      <th>1st Quarter Amount</th>
+      <th>2nd Quarter Quantity</th>
+      <th>2nd Quarter Amount</th>
+      <th>3rd Quarter Quantity</th>
+      <th>3rd Quarter Amount</th>
+      <th>4th Quarter Quantity</th>
+      <th>4th Quarter AmounT</th>
+    </tr>
+  </thead>
+ 
+  
+  {{dataframe}}
+  
+</body>
+</html>

@@ -1,0 +1,103 @@
+
+
+<script>
+  var lst_cc = "{{lst_cc}}";
+  var lst_category = "{{lst_category}}";
+  var lst_items = "{{lst_items}}";
+  var lst_yr_qrtr = "{{lst_yr_qrtr}}";
+
+  var specifics = "{{specifics}}"
+
+
+</script>
+
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  id = "modal-dialog-id2" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Denied Request</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+    
+
+        <script>
+            var items_categories = "{{categories}}";
+        
+        </script>
+
+    
+        <div class = "inline-div"> 
+
+        </div>
+            <br/>
+            <br/>
+    
+            <div class="table100 ver4 m-b-110" >
+                <table data-vertable="ver4" >
+                    <thead>
+                        <tr class="row100_ppmp head">
+         
+                            <th class="column101 column66" >Item </th>
+
+                            <th class="column101 column44" >Cost Center Requester</th>
+                            <th class="column101 column44" >Date Requested</th>
+                        </tr>
+          
+                    </thead>
+                    <tbody >
+                        {% for item in lst_requests %}
+
+                        <tr class="row100">
+
+                            <td class="column101 column66" >{{ item.1 }}</td>
+                            <td class="column101 column44" >{{ item.9 }}</td>
+                            <td class="column101 column44" >{{ item.8 }}</td>
+                           
+                    </tr>
+
+                        {% endfor %}
+
+
+
+                    
+                    </tbody>
+                </table>
+                <br/>
+                <form method="post"  class = "inline-div" autocomplete="off" action="{% url 'PPMP:requests' parameter=999995%}">
+                  {% csrf_token %}
+                  <br/>
+                  What Specifications to suggest instead?
+                  <div>{{ specifics1}}</div>
+                  <div>{{ specifics2}}</div>
+                  <div>{{ specifics3}}</div>
+                  <div>{{ specifics4}}</div>
+                  <div>{{ specifics5}}</div>
+      
+                  <br/>
+                  Comments:
+                  <br/>
+          
+                  {{ commentrequestform }}
+              
+          <br/>
+          <div class = "inline-div">
+            <button type="submit" value="Submit" class="button-formal">Save</button>  
+            
+            </form> 
+            <form method="post"   class = "inline-div"   autocomplete="off" action="{% url 'PPMP:ppmp' parameter=9999981%}">
+              {% csrf_token %}
+              <button type="submit" value="Submit" class="button-formal">Back</button></form> 
+  
+              </div>  
+
+    
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

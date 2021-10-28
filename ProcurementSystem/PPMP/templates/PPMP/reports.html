@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<title>Procurement System</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/menu-requests.css' %}">
+<!--===============================================================================================-->
+
+	{% load static %} 
+	<link rel="icon" type="image/png" href="{% static 'highlight/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+
+
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/util.css' %}">
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/css-for-reports.css' %}">
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/input31.css' %}">
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/incdec1.css' %}">
+
+		
+
+<!--===============================================================================================-->
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+
+	{% if modal_type == 'One' %}
+	{% include "reports_one.html" %}
+
+	{% endif %}		
+
+
+
+
+	<body>
+  
+
+  
+  <ul class ="nav-navbar-nav">
+  
+  <li id = "menu-nav">  <a href = " "> Files</a></li>
+  
+  <li id = "menu-nav"><a href = " "> Queries</a></li>
+  
+  <li id = "menu-nav"><a href = " "> Utilities</a></li>
+  
+  <li id = "menu-nav"><a href = " "> Help</a></li>
+  </ul>
+  
+  
+  <ul class ="nav-navbar-nav2">
+  
+	<li id = "menu-nav">  <a href = " "> Items</a></li>
+	
+	<li id = "menu-nav"><a href = " "> Category</a></li>
+	
+	<li id = "menu-nav"><a href="{% url 'PPMP:ppmp' parameter=999990%}" value="{{lst_cc}}">PPMP</a></li>
+	
+	<li id = "menu-nav"><a href="{% url 'PPMP:app' parameter=999990%}" value="{{lst_cc}}">APP</a></li>
+        <li id = "menu-nav"><a href="{% url 'PPMP:view_pr' parameter=999990%}" value="{{lst_cc}}">View PRs</a></li>
+	
+	<li id = "menu-nav"><a href="{% url 'PPMP:reports' parameter=999990%}" value="{{lst_cc}}">Reports</a></li>
+	{% if with_requests %}
+	<li id = "menu-nav" class="requests"><a href="{% url 'PPMP:requests' parameter=999990%}" value="{{lst_cc}}">Requests</a></li>
+	{% endif %}
+	</ul>
+
+
+	{% load static %} 
+	<script src="{% static 'highlight/test/mainmodal7.js' %}"></script>
+
+
+	{% load static %} 
+	<script src="{% static 'highlight/test/incdec5.js' %}"></script>
+	{% load static %} 
+	<script src="{% static 'highlight/test/autocomplete6.js' %}"></script>
+	{% load static %} 
+	<script src="{% static 'highlight/test/autocomplete_category.js' %}"></script>
+	{% load static %} 
+	<script src="{% static 'highlight/test/autocomplete_items.js' %}"></script>
+	{% load static %} S
+	<script src="{% static 'highlight/test/autocomplete_date.js' %}"></script>
+	{% load static %} 
+	<script src="{% static 'highlight/test/autocomplete_cost_center1.js' %}"></script>
+
+
+<!--===============================================================================================-->
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/bootstrap/js/popper.js' %}"></script>
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	
+{% load static %} 
+<script src="{% static 'highlight/test/main4.js' %}"></script>
+
+		
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+
+
+<script>
+  var lst_cc = "{{lst_cc}}";
+  var lst_category = "{{lst_category}}";
+  var lst_items = "{{lst_items}}";
+  var lst_yr_qrtr = "{{lst_yr_qrtr}}";
+
+</script>
+
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  id = "modal-dialog-id2" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pending Requests</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+    
+
+        <script>
+            var items_categories = "{{categories}}";
+        
+        </script>
+
+    
+        <div class = "inline-div"> 
+
+        </div>
+            <br/>
+            <br/>
+    
+            <div class="table100 ver4 m-b-110" >
+                <table data-vertable="ver4" >
+                    <thead>
+                        <tr class="row100_ppmp head">
+         
+                            <th class="column101 column66" >Item </th>
+
+                            <th class="column101 column44" >Cost Center Requester</th>
+                            <th class="column101 column44" >Date Requested</th>
+                            <th class="column101 column22" colspan="2" >Approved?</th>
+                        </tr>
+                        <tr class="row100_ppmp head">
+         
+                          <th class="column101 column66" > </th>
+
+                          <th class="column101 column44" ></th>
+                          <th class="column101 column44" ></th>
+                          <th class="column101 column11" >Yes</th>
+                          <th class="column101 column11" >No</th>
+                      </tr>
+                    </thead>
+                    <tbody class = "tbody1">
+                        {% for item in lst_requests %}
+
+                        <tr class="row100">
+
+                            <td class="column101 column66" >{{ item.1 }}</td>
+                            <td class="column101 column44" >{{ item.9 }}</td>
+                            <td class="column101 column44" >{{ item.8 }}</td>
+                            <td class="column101 column11" ><font size ="+1"><a href="{% url 'PPMP:requestsyes' parameter=item.0%}"  >Y</a></font></td>
+                            <td class="column101 column11b" ><font size ="+1"><a href="{% url 'PPMP:requestsno' parameter=item.0%}"  >N</a></font></td>
+  
+                    </tr>
+
+                        {% endfor %}
+
+
+
+                    
+                    </tbody>
+                </table>
+
+                <br/>
+
+    
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

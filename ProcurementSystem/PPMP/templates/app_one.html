@@ -1,0 +1,129 @@
+
+<style>
+	h3 {text-align: center;}
+	</style>		
+
+
+<script>
+  var lst_cc = "{{lst_cc}}";
+  var lst_category = "{{lst_category}}";
+  var lst_items = "{{lst_items}}";
+  var lst_yr_qrtr = "{{lst_yr_qrtr}}";
+
+</script>
+
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  id = "modal-dialog-id5" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create APP</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+    
+
+        <script>
+            var items_categories = "{{categories}}";
+        
+        </script>
+
+
+    
+        <div class = "inline-div"> 
+
+        <form  method="POST"  autocomplete="off"  action="{% url 'PPMP:app' parameter=999991%}" >	
+          {% csrf_token %}
+          <div class = "inline-div"> {{ sofform }}</div>
+          <div class = "inline-div"> {{ catform }}</div>
+	  <div class = "inline-div"> {{ yrform }}</div>
+	  <div class = "inline-div"> {{ typeform }}</div>
+          <div class = "inline-div"> {{ quarterform }}</div>
+        <button type="submit" value="Update" class="button-formal">Create</button>
+        </form>
+
+        </div>
+            <br/>	
+            <br/>
+			{% if with_value%}
+			<br/>
+			<b><h3>ANNUAL PROCUREMENT PLAN</h3></b>
+			<b><h3>{{ sof_val}} for  {{qrtr_val}} {{yr_val}} ( {{type_val}})</h3></b>
+			<b><h3> {{cat_val}} ( {{code_val}} )</h3></b>
+			<br/>
+            <div class="table100 ver4 m-b-110" >
+                <table data-vertable="ver4" >
+                    <thead>
+         					
+                        <tr class="row100_ppmp1 head">
+
+                            <th class="column101 column11" >No.</th>
+                            <th class="column101 column55" >Item Description</th>
+                            <th class="column101 column77" >Unit</th>
+                            <th class="column101 column77" >Unit Price</th>
+                            <th class="column102 column22" >Quantity</th>
+                            <th class="column102 column22" >Amount</th>	
+<!--                            <th class="column102 column22" >Qty</th>
+                            <th class="column102 column22" >Amount</th>
+                            <th class="column102 column22" >Qty</th>
+                            <th class="column102 column22" >Amount</th>
+                            <th class="column102 column22" >Qty</th>
+                            <th class="column102 column22" >Amount</th>	
+                            <th class="column102 column22" >Qty</th>
+                            <th class="column102 column22" >Amount</th>			-->
+                            <th class="column101 column44" >PMO/End-User</th>
+                            <th class="column101 column44" >Mode of Procurement</th>	
+
+								
+					              	</tr>
+						
+
+                    </thead>
+                   
+                    <tbody class = "tbody1">
+                      {% for item in lst_app %}
+                       <!-- Let the Tbody be the measuring stick for the table's width. Set first the tbody. Then let the thead adjusts--> 
+                      <tr class="row100">
+                        <td class="column101 column11" >   {{ item.0}}</td>
+                        <td class="column101 column55" >   {{ item.1}}</td>
+                        <td class="column101 column77" >   {{ item.2}}</td>
+                        <td class="column101 column77" >   {{ item.3}}</td>
+                        <td class="column102 column22" >   {{ item.4}}</td>
+                        <td class="column102 column22" >   {{ item.5}}</td>
+<!--                        <td class="column102 column22" >   {{ item.6}}</td>
+                        <td class="column102 column22" >   {{ item.7}}</td>
+                        <td class="column102 column22" >   {{ item.8}}</td>
+                        <td class="column102 column22" >   {{ item.9}}</td>
+                        <td class="column102 column22" >   {{ item.10}}</td>
+                        <td class="column102 column22" >   {{ item.11}}</td>
+                        <td class="column102 column22" >   {{ item.12}}</td>-->
+                        <!--<td class="column102 column22" >   {{ item.13}}</td>-->
+                        <td class="column101 column44" >   {{ item.6}}</td>
+                        <td class="column101 column44b" >  </td>
+                      </tr>
+
+                      {% endfor %}
+
+
+
+                  
+                  </tbody>
+
+
+                </table>
+
+                <br/>
+
+        <button type="submit" value="Update" class="button-formal" >
+        <a href="{% url 'PPMP:print_app' parameter=3%}" ><font color="white">Print APP </font></a></button>  &nbsp;  
+
+	</div>
+	{% endif %}	
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

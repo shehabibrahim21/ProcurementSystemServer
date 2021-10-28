@@ -1,0 +1,41 @@
+
+  .nav-navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:  #fcd380;
+  }
+  .nav-navbar-nav2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:  #add8e6;
+  }
+
+
+  #menu-nav {
+    float: left;
+  }
+  
+  #menu-nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  #menu-nav a:hover {
+    background-color: #111111;
+  }
+
+  .requests{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:  #8b0b27;
+  }

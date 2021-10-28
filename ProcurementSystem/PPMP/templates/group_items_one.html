@@ -1,0 +1,402 @@
+
+<style>
+
+
+            .tab-btn{margin: 50px;
+            position: absolute;
+            top: 6vh; 
+          
+            }
+            button{display:block;margin-bottom: 20px;}
+            tr{transition:all .25s ease-in-out}
+            tr:hover{background-color: #ddd;}
+            #table2_{
+                   position: absolute;
+                    top: 8.1vh; 
+                    left: 50vw;
+            }
+            #table1{
+                   position: relative;
+                    top: 5.5vh; 
+                    left: 1vw;
+            }
+            #form1{
+                   position: absolute;
+                    top: 2.1vh; 
+                    left: 50vw;
+            }         
+     </style>   
+        <script>
+            var all_items = "{{all_group}}";
+            
+        </script>
+
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  id = "modal-dialog-id5" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Group Items For RFQ</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+    
+
+        <script>
+            var items_categories = "{{categories}}";
+        
+        </script>
+          <div id = "form1">
+          <form method="post"  autocomplete="off" action="{% url 'PPMP:change_group' parameter=9999931%}">
+          {% csrf_token %}	
+          {{ searchgroupform }}
+
+            <button type="submit" value="Submit" class="button-formal">Select Group</button>
+
+            </form>    
+          </div>
+            <div class="container">
+            <div class = "inline-div"> 
+            <div class="table100 ver4 m-b-110" >
+                <table data-vertable="ver4"  id="table1" >
+                    <thead>
+         					
+                        <tr class="row100_ppmp1 head">
+
+                            <th class="column101 column11" >No.</th>
+                            <th class="column101 column55" >Item Description</th>
+
+                            <th class="column101 column11" >Select</th>    
+								
+					              	</tr>
+						
+
+                    </thead>
+                   
+                    <tbody class = "tbody1">
+                      {% for item in list %}
+                       <!-- Let the Tbody be the measuring stick for the table's width. Set first the tbody. Then let the thead adjusts--> 
+                      <tr class="row100">
+                        <td class="column101 column11" >   {{ item.7}}</td>
+                        <td class="column101 column55" >   {{ item.1}}</td>
+                        <td class="column101 column11" ><input type="checkbox" name="check-tab1"></td>
+                      </tr>
+
+                      {% endfor %}
+
+
+
+                  
+                  </tbody>
+
+
+                </table>
+
+                <br/>
+
+ 
+</div>
+	</div>
+             <div class = "inline-div"> 
+             <div class="tab tab-btn" >
+                <button onclick="tab1_To_tab2();">>>>>></button>
+                <button onclick="tab2_To_tab1();"><<<<<</button>
+            </div>
+                </div>
+                 <div class = "inline-div"> 
+            {% if set_group %}
+            
+               <div class="table100 ver4 m-b-110" id ="table2_" >
+                
+                <table data-vertable="ver4" id="table2"  >
+                     
+                        <tr class="row100_ppmp1 head">
+
+                            <th class="column101 column11" >No.</th>
+                            <th class="column101 column55" >Item Description</th>
+
+                            <th class="column101 column11" >Select</th>    
+								
+			</tr>
+                    
+                       <tbody class = "tbody1">
+                      {% for item in list_group %}
+                       <!-- Let the Tbody be the measuring stick for the table's width. Set first the tbody. Then let the thead adjusts--> 
+                      <tr class="row100">
+                        <td class="column101 column11" >   {{ item.7}}</td>
+                        <td class="column101 column55" >   {{ item.1}}</td>
+                        <td class="column101 column11" ><input type="checkbox" name="check-tab2"></td>
+                      </tr>
+
+                      {% endfor %}
+
+
+
+                  
+                  </tbody>
+                      
+                </table>   
+       <button type="submit" value="Update" class="button-formal" >
+        <a href="{% url 'PPMP:group_items' parameter=3%}" ><font color="white">New Group </font></a></button>  &nbsp;  
+       <button type="submit" value="Update" class="button-formal" >
+        <a href="{% url 'PPMP:set_group' parameter=3%}" ><font color="white">Set Group </font></a></button>  &nbsp;  
+                
+            </div>     
+            
+            {% else %}
+          
+            <div class="table100 ver4 m-b-110" id ="table2_" >
+                
+                <table data-vertable="ver4" id="table2"  >
+                      
+                        <tr class="row100_ppmp1 head">
+
+                            <th class="column101 column11" >No.</th>
+                            <th class="column101 column55" >Item Description</th>
+
+                            <th class="column101 column11" >Select</th>    
+								
+			</tr>
+                     
+                
+                      
+                </table>   
+
+                       <button type="submit" value="Update" class="button-formal" >
+        <a href="{% url 'PPMP:group_items' parameter=3%}" ><font color="white">New Group </font></a></button>  &nbsp;  
+       <button type="submit" value="Update" class="button-formal" >
+        <a href="{% url 'PPMP:set_group' parameter=3%}" ><font color="white">Set Group </font></a></button>  &nbsp;  
+            </div>     
+            {% endif %}
+
+                  </div>
+            </div>
+		
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% block custom_js %}
+<script>
+
+ </script>
+{% endblock custom_js %}
+  <script>
+          function saveTempGroup(id){
+                $.ajax({
+                    url:"http://localhost:8000/savetempgroup/",
+                    type:"POST",
+                    data:{id:id},
+                })
+                .done(function(response){
+                    console.log(response);
+                })
+                .fail(function(){
+                   console.log("Error Occured");
+                });
+
+            }
+       
+           function removeTempGroup(id){
+                $.ajax({
+                    url:"http://localhost:8000/removetempgroup/",
+                    type:"POST",
+                    data:{id:id},
+                })
+                .done(function(response){
+                    console.log(response);
+                })
+                .fail(function(){
+                   console.log("Error Occured");
+                });
+
+            }         
+            function tab1_To_tab2()
+            {
+                var table1 = document.getElementById("table1"),
+                    table2 = document.getElementById("table2"),
+                    checkboxes = document.getElementsByName("check-tab1");
+            console.log("Val1 = " + checkboxes.length);
+                 for(var i = 0; i < checkboxes.length; i++)
+                     if(checkboxes[i].checked)
+                        {
+                            // create new row and cells
+                            var newRow = table2.insertRow(table2.length),
+                                cell1 = newRow.insertCell(0),
+                                cell2 = newRow.insertCell(1),
+                                cell3 = newRow.insertCell(2);
+                            // add values to the cells
+                            cell1.innerHTML = table1.rows[i+1].cells[0].innerHTML;
+                            cell2.innerHTML = table1.rows[i+1].cells[1].innerHTML;
+                            cell3.innerHTML = "<input type='checkbox' name='check-tab2'>";
+                           
+                            // remove the transfered rows from the first table [table1]
+                            var index = table1.rows[i+1].rowIndex;
+                            table1.deleteRow(index);
+                            // we have deleted some rows so the checkboxes.length have changed
+                            // so we have to decrement the value of i
+                            i--;
+                           console.log(checkboxes.length);
+                           console.log(cell1.innerHTML)
+                           console.log(cell2.innerHTML)
+                           saveTempGroup(cell1.innerHTML)
+                        }
+            }
+            
+            
+            function tab2_To_tab1()
+            {
+                var table1 = document.getElementById("table1"),
+                    table2 = document.getElementById("table2"),
+                    checkboxes = document.getElementsByName("check-tab2");
+            console.log("Val1 = " + checkboxes.length);
+                 for(var i = 0; i < checkboxes.length; i++)
+                     if(checkboxes[i].checked)
+                        {
+                            // create new row and cells
+                            var newRow = table1.insertRow(table1.length),
+                                cell1 = newRow.insertCell(0),
+                                cell2 = newRow.insertCell(1),
+                                cell3 = newRow.insertCell(2);
+                            // add values to the cells
+                            cell1.innerHTML = table2.rows[i+1].cells[0].innerHTML;
+                            cell2.innerHTML = table2.rows[i+1].cells[1].innerHTML;
+                            cell3.innerHTML = "<input type='checkbox' name='check-tab1'>";
+                           
+                            // remove the transfered rows from the second table [table2]
+                            var index = table2.rows[i+1].rowIndex;
+                            table2.deleteRow(index);
+                            // we have deleted some rows so the checkboxes.length have changed
+                            // so we have to decrement the value of i
+                            i--;
+                           console.log(checkboxes.length);
+                           removeTempGroup(cell1.innerHTML)
+                        }
+            }
+
+    
+
+        function autocomplete1(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            console.log(inp)
+            inp.addEventListener("input", function(e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) { return false;}
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+
+                for (i = 0; i < arr.length; i++) {
+                  var list_string = arr[i].toUpperCase().split('');                  
+                  var list_string_val = val.toUpperCase().split('');
+
+                  /*check if the item starts with the same letters as the text field value:*/
+                  res = list_string_val.every(function(val) {
+                        return list_string.indexOf(val) >= 0;
+                    });
+        //          if (element.toUpperCase().includes(val_element.toUpperCase())){
+        //          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    if (res){
+                    /*create a DIV element for each matching element:*/
+                    b = document.createElement("DIV");
+                    /*make the matching letters bold:*/
+                    b.innerHTML =  arr[i].substr(0, val.length);
+                    b.innerHTML += arr[i].substr(val.length);
+                    /*insert a input field that will hold the current array item's value:*/
+                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                    /*execute a function when someone clicks on the item value (DIV element):*/
+                    b.addEventListener("click", function(e) {
+                        /*insert the value for the autocomplete text field:*/
+                        inp.value = this.getElementsByTagName("input")[0].value;
+                        /*close the list of autocompleted values,
+                        (or any other open lists of autocompleted values:*/
+                        closeAllLists();
+                    });
+                    a.appendChild(b);
+                  }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function(e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                  /*If the arrow DOWN key is pressed,
+                  increase the currentFocus variable:*/
+                  currentFocus++;
+                  /*and and make the current item more visible:*/
+                  addActive(x);
+                } else if (e.keyCode == 38) { //up
+                  /*If the arrow UP key is pressed,
+                  decrease the currentFocus variable:*/
+                  currentFocus--;
+                  /*and and make the current item more visible:*/
+                  addActive(x);
+                } 
+                else if (e.keyCode == 13) {
+                  /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        //          e.preventDefault();
+                  if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (x) x[currentFocus].click();
+                  }
+                }
+            });
+            function addActive(x) {
+              /*a function to classify an item as "active":*/
+              if (!x) return false;
+              /*start by removing the "active" class on all items:*/
+              removeActive(x);
+              if (currentFocus >= x.length) currentFocus = 0;
+              if (currentFocus < 0) currentFocus = (x.length - 1);
+              /*add class "autocomplete-active":*/
+              x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+              /*a function to remove the "active" class from all autocomplete items:*/
+              for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("autocomplete-active");
+              }
+            }
+            function closeAllLists(elmnt) {
+              /*close all autocomplete lists in the document,
+              except the one passed as an argument:*/
+              var x = document.getElementsByClassName("autocomplete-items");
+              for (var i = 0; i < x.length; i++) {
+                if (elmnt != x[i] && elmnt != inp) {
+                  x[i].parentNode.removeChild(x[i]);
+                }
+              }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+          }
+
+          var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+
+          var list_gen = [];
+        //  console.log(all_items)
+          var list1 = all_items.split("   ");
+          list_gen = list1.filter(function(item, pos) { 
+              return list1.indexOf(item) == pos;
+          })
+ 
+   autocomplete1(document.getElementsByClassName("autocomplete_group")[0],list_gen); 
+
+        </script>    
+        

@@ -1,0 +1,126 @@
+----miniconda installation
+wget <url of the installer>
+chmod +x <filename>
+./<filename>
+ENTER
+yes
+yes
+
+
+----jupyterhub notebook installation
+source ~./bashrc
+conda install jupyterhub notebook
+
+----to validate installation
+conda list
+
+
+
+tmux
+tmux a        ----> attach to running instance
+CTRL+b d     -----> close or detach
+CTRL+b " -----> vertical split
+CTRL+b %   -----horizontal split
+CTRL+b x ---> exit or close window
+
+
+
+sudo su
+source /home/ubuntu/.bashrc
+
+
+export PATH="/home/ubuntu/miniconda3/bin:$PATH"
+
+
+
+
+sudo useradd -m -s /bin/bash <username>
+sudo passwd <username>
+
+
+----install modules
+conda install pandas
+conda install -c conda-forge jupyter_contrib_nbextensions
+conda install dask distributed
+
+
+sudo adduser <username>
+
+
+
+
+Setup AWS:
+ssh -i ~/.ssh/aws_ec2.pem ubuntu@52.194...
+
+Putty
+Open puttygen
+Generate ppk file from the pem file that was retrieved from the step above
+Open putty
+Category>Session: Set this as hostname: ubuntu@52.207.223.137
+Category>SSH>Auth: Open the ppk
+Go to Session again, and save the instance
+Double click the saved instance to open the terminal
+
+
+After setting putty up
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+This is from the miniconda website
+Make the sh file executable
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+Open the file
+./Miniconda3-latest-Linux-x86_64.sh
+Install jupyterhub
+source ~/.bashrc
+conda install jupyterhub notebook
+tmux 
+https://tmuxcheatsheet.com/
+to go back to normal screen
+CTRL+B, then release CTRL and B, then press D
+open tmux instance
+tmux a
+to add a screen
+CTRL+B, release, then " <- this is SHIFT+<the key shared by ' and ">
+type 'exit' to close window
+Check processes
+ps aux | grep tmux
+Then do the following:
+sudo su
+source .bashrc
+jupyterhub --port 80
+To check jupyterhub
+which jupyterhub
+Setup security groups in AWS console
+Add access to http
+Do not delete SSH!!!
+Access your ip address on your browser
+Create a user in Linux
+sudo useradd -ms /bin/bash <username>
+or sudo adduser <- I think this is better and easier
+sudo passwd <username>
+username: cyntwikip | password: cyntwikip
+Install nbextensions
+conda install -c conda-forge jupyter_contrib_nbextensions
+Install dask
+conda install dask distributed
+
+To terminate instance in AWS:
+Right click an instance
+Click Instance State, then terminate
+
+To do the ditributed thingy:
+type 'dask-scheduler' in the terminal
+take note of the ip address returned
+open a new window in terminal
+CTRL+B, release, then %
+this makes the current instance the scheduler
+there should only be 1 scheduler
+to make the instance a worker:
+type 'dask-worker <ip address of the scheduler>'
+setup the security stuff on AWS console
+...
+
+
+
+
+
+

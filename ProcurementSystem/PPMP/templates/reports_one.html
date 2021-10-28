@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<title>Procurement System</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/menu.css' %}">
+<!--===============================================================================================-->
+
+	{% load static %} 
+	<link rel="icon" type="image/png" href="{% static 'highlight/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+
+
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/util.css' %}">
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/css-for-reports.css' %}">
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/input31.css' %}">
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/incdec1.css' %}">
+
+		
+
+<!--===============================================================================================-->
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<script>
+  var lst_cc = "{{lst_cc}}";
+  var lst_category = "{{lst_category}}";
+  var lst_items = "{{lst_items}}";
+  var lst_yr_qrtr = "{{lst_yr_qrtr}}";
+
+</script>
+
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  id = "modal-dialog-id2" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Report</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+    
+
+        <script>
+            var items_categories = "{{categories}}";
+        
+        </script>
+
+    
+        <div class = "inline-div"> 
+
+        <form  method="POST"  autocomplete="off"  action="{% url 'PPMP:reports' parameter=999991%}" >	
+          {% csrf_token %}
+          <div class = "inline-div"> {{ searchcostcenterform }}</div>
+          <div class = "inline-div"> {{ searchcategoryform }}</div>
+          <div class = "inline-div"> {{ searchitemsform }}</div>
+          <div class = "inline-div"> {{ searchquarterform }}</div>
+        <button type="submit" value="Update" class="button-formal">Filter</button>
+        </form>
+
+        </div>
+            <br/>
+            <br/>
+    
+            <div class="table100 ver4 m-b-110" >
+                <table data-vertable="ver4" >
+                    <thead>
+                        <tr class="row100_ppmp head">
+                            <th class="column101 column44" >Cost Center </th>
+                            <th class="column101 column44" >Category </th>
+                            <th class="column101 column44" >Source of Fund</th>
+                            <th class="column101 column44" >Year</th>
+                            <th class="column101 column44" >Item</th>
+                            <th class="column101 column44" >Quantity</th>
+                            <th class="column101 column44" >Date Requested</th>
+  
+                    </thead>
+                    <tbody class = "tbody1">
+                        {% for item in lst_report %}
+
+                        <tr class="row100">
+                            <td class="column101 column44" >{{ item.0 }}</td>
+                            <td class="column101 column44" >{{ item.1 }}</td>
+                            <td class="column101 column44" >{{ item.2 }}</td>
+                            <td class="column101 column44" >{{ item.3 }}</td>
+                            <td class="column101 column44" >{{ item.4 }}</td>
+                            <td class="column101 column44" >{{ item.6 }}</td>
+                            <td class="column101 column44b" >{{ item.5 }}</td>
+  
+                    </tr>
+
+                        {% endfor %}
+
+
+
+                    
+                    </tbody>
+                </table>
+
+                <br/>
+
+    
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% load static %} 
+<script src="{% static 'highlight/test/mainmodal7.js' %}"></script>
+
+
+{% load static %} 
+<script src="{% static 'highlight/test/incdec5.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete6.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_category.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_items.js' %}"></script>
+{% load static %} S
+<script src="{% static 'highlight/test/autocomplete_date.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/test/autocomplete_cost_center1.js' %}"></script>
+
+
+
+<!--===============================================================================================-->
+{% load static %} 
+<script src="{% static 'highlight/vendor/bootstrap/js/popper.js' %}"></script>
+{% load static %} 
+<script src="{% static 'highlight/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+{% load static %} 
+<script src="{% static 'highlight/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+
+{% load static %} 
+<script src="{% static 'highlight/test/main4.js' %}"></script>
+
+  
+
+</body>
+</html>

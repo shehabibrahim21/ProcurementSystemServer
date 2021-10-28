@@ -1,0 +1,230 @@
+<!--- First Modal------------------------------------------------------------------------------------------------------------------------->
+
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog"  id = "modal-dialog-id1">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Cost Center PPMP</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+
+
+
+			<button type="submit" class="btn btn-success delete" data-dismiss="modal" data-toggle="modal"  href="#confirmModal">  Select Cost Center</button>
+			
+			{% if with_content %}
+			
+			<br />
+			<br />
+			Cost Center Code: <b>{{ course_code }}</b> 
+			<br/>
+			Cost Center Name:  <b>{{ course_name }}</b>
+			<br>
+			<br>
+			<form  method="POST"  action="{% url 'PPMP:update_year_modal_one' parameter=999991%}">	
+			{% csrf_token %}		
+			{{ dropdownform }}
+			<button type="submit" value="Update" class="button-formal">Update Year</button>
+			</form>
+			<br>
+
+
+
+
+				{% if show_buttons %}
+				<div class="table100 ver4 m-b-110">
+					<table id = "table">
+						<thead>
+							<tr class="row100 head">
+								<th class="hcolumn300 column1" data-column="column1">PPMP ID</th>
+								<th class="hcolumn300 column2" data-column="column2">COST CENTER</th>
+								<th class="hcolumn300 column2" data-column="column2">FUND SOURCE</th>
+								<th class="hcolumn300 column1" data-column="column1">PPMP YEAR</th>
+								<th class="hcolumn300 column2" data-column="column2">PPMP TYPE</th>
+								<th class="hcolumn300 column1" data-column="column1">FUND CODE</th>
+							</tr>
+						</thead>
+						<tbody class = "tbody1">
+							
+							{% for item in lst_ppmp%}
+
+							{% if item == lst_ppmp_id %}
+
+							<tr class="selected">
+								<td class="column300 column1" data-column="column1">
+									<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+										<font color = "black">	{{ item.0}}</font>
+								</a>
+								</td>
+	
+								<td class="column300 column2" data-column="column2">
+									<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+										<font color = "black">	{{ item.1}}</font>
+									</a>
+								</td>
+	
+								<td class="column300 column2" data-column="column2">
+									<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+										<font color = "black">	{{ item.2}}</font>
+									</a>
+								</td>
+	
+								<td class="column300 column1" data-column="column1">
+									<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+										<font color = "black">	{{ item.3}}</font>
+									</a>
+								</td>
+	
+								<td class="column300 column2" data-column="column2">
+									<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+										<font color = "black">	{{ item.4}}</font>
+									</a>
+								</td>
+	
+								<td class="column300 column1" data-column="column1">
+									<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+										<font color = "black">	{{ item.5}}</font>
+									</a>
+								</td>		
+
+							{% else %}
+
+						<tr class="row100">
+							<td class="column300 column1" data-column="column1">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.0}}</font>
+							</a>
+							</td>
+							<td class="column300 column2" data-column="column2">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.1}}</font>
+								</a>
+							</td>
+
+							<td class="column300 column2" data-column="column2">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.2}}</font>
+								</a>
+							</td>
+
+							<td class="column300 column1" data-column="column1">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.3}}</font>
+								</a>
+							</td>
+
+							<td class="column300 column2" data-column="column2">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.4}}</font>
+								</a>
+							</td>
+
+							<td class="column300 column1" data-column="column1">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.5	}}</font>
+								</a>
+							</td>		
+							{% endif %}
+						{% endfor %}
+
+
+
+
+						
+						</tbody>
+					</table>
+		
+		<button type="submit" value="Update" class="button-formal">
+			<a href="{% url 'PPMP:create_ppmp' parameter=999993%}"  > <font color="white">	Create PPMP</font></a></button>
+
+		<button type="submit" value="Update" class="button-formal">
+			<a href="{% url 'PPMP:ppmp' parameter=1%}"  > <font color="white">View/ Edit PPMP Details</font></a></button>
+
+		<button type="submit" value="Update" class="button-formal">
+			<a href="{% url 'PPMP:ppmp' parameter=1%}"  > <font color="white">Edit PPMP Info</font></a></button>
+
+			
+
+			{% else %}
+
+			
+
+			<b> Please Select PPMP ID </b>
+			<br/>
+			<div class="table100 ver4 m-b-110">
+				<table id = "table">
+					<thead>
+						<tr class="row100 head">
+							<th class="hcolumn300 column1" data-column="column2">PPMP ID</th>
+							<th class="hcolumn300 column2" data-column="column3">COST CENTER</th>
+							<th class="hcolumn300 column2" data-column="column4">FUND SOURCE</th>
+							<th class="hcolumn300 column1" data-column="column5">PPMP YEAR</th>
+							<th class="hcolumn300 column2" data-column="column6">PPMP TYPE</th>
+							<th class="hcolumn300 column1" data-column="column7">FUND CODE</th>
+						</tr
+					</thead>
+					<tbody class = "tbody1">
+						
+						{% for item in lst_ppmp%}
+
+						<tr class="row100">
+							<td class="column300 column1" data-column="column2">
+								<a href="{% url 'PPMP:ppmp' parameter=item.0%}"  ><font color = "black">	{{ item.0}}</font>
+							
+							</a>
+							</td>
+
+							<td class="column300 column2" data-column="column3">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.1}}</font>
+								</a>
+							</td>
+
+							<td class="column300 column2" data-column="column4">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.2}}</font>
+								</a>
+							</td>
+
+							<td class="column300 column1" data-column="column5">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.3}}</font>
+								</a>
+							</td>
+
+							<td class="column300 column2" data-column="column6">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.4}}</font>
+								</a>
+							</td>
+
+							<td class="column300 column1" data-column="column7">
+								<a href="{% url 'PPMP:clicked_modal_one' parameter=item.0%}"  >
+									<font color = "black">	{{ item.5}}</font>
+								</a>
+							</td>		
+
+						{% endfor %}
+					</tbody>
+				</table>
+			
+				
+				<button type="submit" value="Update" class="button-formal" id ="disabled">Create PPMP</button>
+		
+				<button type="submit" value="Update" class="button-formal" id ="disabled">
+					<a href="{% url 'PPMP:ppmp' parameter=1%}"  > <font color="white">View/ Edit PPMP Details</font></a></button>
+		
+				<button type="submit" value="Update" class="button-formal" id ="disabled">
+					<a href="{% url 'PPMP:ppmp' parameter=1%}"  > <font color="white">Edit PPMP Info</font></a></button>
+
+
+			{% endif %}
+			{% endif %}
+		</div>
+		</div>
+	  </div>
+	</div>
+  </div>

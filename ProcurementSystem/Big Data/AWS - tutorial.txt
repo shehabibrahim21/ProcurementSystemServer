@@ -1,0 +1,242 @@
+Using username "ubuntu".
+Authenticating with public key "imported-openssh-key"
+Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-1021-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Fri Nov 23 05:53:40 UTC 2018
+
+  System load:  0.0               Processes:           93
+  Usage of /:   13.3% of 7.69GB   Users logged in:     0
+  Memory usage: 3%                IP address for eth0: 172.31.40.16
+  Swap usage:   0%
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-40-16:~$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.shhttps://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+--2018-11-23 06:06:33--  https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.shhttps://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+Resolving repo.anaconda.com (repo.anaconda.com)... 104.17.107.77, 104.17.108.77, 104.17.109.77, ...
+Connecting to repo.anaconda.com (repo.anaconda.com)|104.17.107.77|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2018-11-23 06:06:33 ERROR 404: Not Found.
+
+ubuntu@ip-172-31-40-16:~$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+--2018-11-23 06:06:38--  https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+Resolving repo.anaconda.com (repo.anaconda.com)... 104.17.111.77, 104.17.110.77, 104.17.109.77, ...
+Connecting to repo.anaconda.com (repo.anaconda.com)|104.17.111.77|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 62574861 (60M) [application/x-sh]
+Saving to: ‘Miniconda3-latest-Linux-x86_64.sh’
+
+Miniconda3-latest-L 100%[===================>]  59.68M   115MB/s    in 0.5s
+
+2018-11-23 06:06:38 (115 MB/s) - ‘Miniconda3-latest-Linux-x86_64.sh’ saved [62574861/62574861]
+
+ubuntu@ip-172-31-40-16:~$ chmod +x Miniconda3-latest-Linux-x86_64.sh
+ubuntu@ip-172-31-40-16:~$ ./Miniconda3-latest-Linux-x86_64.sh
+
+Welcome to Miniconda3 4.5.11
+
+In order to continue the installation process, please review the license
+agreement.
+Please, press ENTER to continue
+>>>
+===================================
+Miniconda End User License Agreement
+===================================
+
+Copyright 2015, Anaconda, Inc.
+
+All rights reserved under the 3-clause BSD License:
+
+Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, th
+is list of conditions and the following disclaimer in the documentation and/or o
+ther materials provided with the distribution.
+  * Neither the name of Anaconda, Inc. ("Anaconda, Inc.") nor the names of its c
+ontributors may be used to endorse or promote products derived from this softwar
+e without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WA
+RRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL ANACONDA, INC. BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL
+, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, P
+ROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BU
+SINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN C
+ONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING I
+N ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+Notice of Third Party Software Licenses
+=======================================
+
+Miniconda contains open source software packages from third parties. These are a
+vailable on an "as is" basis and subject to their individual license agreements.
+ These licenses are available in Anaconda Distribution or at http://docs.anacond
+a.com/anaconda/pkg-docs. Any binary packages of these third party tools you obta
+in via Anaconda Distribution are subject to their individual licenses as well as
+ the Anaconda license. Anaconda, Inc. reserves the right to change which third p
+arty tools are provided in Miniconda.
+
+Cryptography Notice
+===================
+
+This distribution includes cryptographic software. The country in which you curr
+ently reside may have restrictions on the import, possession, use, and/or re-exp
+ort to another country, of encryption software. BEFORE using any encryption soft
+ware, please check your country's laws, regulations and policies concerning the
+import, possession, or use, and re-export of encryption software, to see if this
+ is permitted. See the Wassenaar Arrangement http://www.wassenaar.org/ for more
+information.
+
+Anaconda, Inc. has self-classified this software as Export Commodity Control Num
+ber (ECCN) 5D992b, which includes mass market information security software usin
+g or performing cryptographic functions with asymmetric algorithms. No license i
+s required for export of this software to non-embargoed countries. In addition,
+the Intel(TM) Math Kernel Library contained in Anaconda, Inc.'s software is clas
+sified by Intel(TM) as ECCN 5D992b with no license required for export to non-em
+bargoed countries.
+
+The following packages are included in this distribution that relate to cryptogr
+aphy:
+
+openssl
+    The OpenSSL Project is a collaborative effort to develop a robust, commercia
+l-grade, full-featured, and Open Source toolkit implementing the Transport Layer
+ Security (TLS) and Secure Sockets Layer (SSL) protocols as well as a full-stren
+gth general purpose cryptography library.
+
+pycrypto
+    A collection of both secure hash functions (such as SHA256 and RIPEMD160), a
+nd various encryption algorithms (AES, DES, RSA, ElGamal, etc.).
+
+pyopenssl
+    A thin Python wrapper around (a subset of) the OpenSSL library.
+
+kerberos (krb5, non-Windows platforms)
+    A network authentication protocol designed to provide strong authentication
+for client/server applications by using secret-key cryptography.
+
+cryptography
+    A Python library which exposes cryptographic recipes and primitives.
+
+
+Do you accept the license terms? [yes|no]
+[no] >>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>> yes
+
+Miniconda3 will now be installed into this location:
+/home/ubuntu/miniconda3
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+[/home/ubuntu/miniconda3] >>>
+PREFIX=/home/ubuntu/miniconda3
+installing: python-3.7.0-hc3d631a_0 ...
+Python 3.7.0
+installing: ca-certificates-2018.03.07-0 ...
+installing: conda-env-2.6.0-1 ...
+installing: libgcc-ng-8.2.0-hdf63c60_1 ...
+installing: libstdcxx-ng-8.2.0-hdf63c60_1 ...
+installing: libffi-3.2.1-hd88cf55_4 ...
+installing: ncurses-6.1-hf484d3e_0 ...
+installing: openssl-1.0.2p-h14c3975_0 ...
+installing: xz-5.2.4-h14c3975_4 ...
+installing: yaml-0.1.7-had09818_2 ...
+installing: zlib-1.2.11-ha838bed_2 ...
+installing: libedit-3.1.20170329-h6b74fdf_2 ...
+installing: readline-7.0-h7b6447c_5 ...
+installing: tk-8.6.8-hbc83047_0 ...
+installing: sqlite-3.24.0-h84994c4_0 ...
+installing: asn1crypto-0.24.0-py37_0 ...
+installing: certifi-2018.8.24-py37_1 ...
+installing: chardet-3.0.4-py37_1 ...
+installing: idna-2.7-py37_0 ...
+installing: pycosat-0.6.3-py37h14c3975_0 ...
+installing: pycparser-2.18-py37_1 ...
+installing: pysocks-1.6.8-py37_0 ...
+installing: ruamel_yaml-0.15.46-py37h14c3975_0 ...
+installing: six-1.11.0-py37_1 ...
+installing: cffi-1.11.5-py37he75722e_1 ...
+installing: setuptools-40.2.0-py37_0 ...
+installing: cryptography-2.3.1-py37hc365091_0 ...
+installing: wheel-0.31.1-py37_0 ...
+installing: pip-10.0.1-py37_0 ...
+installing: pyopenssl-18.0.0-py37_0 ...
+installing: urllib3-1.23-py37_0 ...
+installing: requests-2.19.1-py37_0 ...
+installing: conda-4.5.11-py37_0 ...
+installation finished.
+Do you wish the installer to prepend the Miniconda3 install location
+to PATH in your /home/ubuntu/.bashrc ? [yes|no]
+[no] >>>

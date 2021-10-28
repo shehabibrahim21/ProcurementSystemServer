@@ -1,0 +1,139 @@
+.container {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+ .table-style {
+                  width: 100%;
+}
+
+
+
+table, th, td {
+  border: 1px  solid black;
+   text-align:center;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#table_bottom
+{
+ border-collapse: collapse;
+  width: 100%;
+   border: 0px  solid white;
+    
+}
+#blank
+{
+  border: 0px  solid white;
+  text-align:center; 
+    
+}
+
+#first{
+    width: 33%;
+    display: inline-block;
+}
+
+#second{
+    width: 33%;
+    display: inline-block;
+}
+
+#third{
+    width: 33%;
+    display: inline-block;
+}
+
+#table_top
+{
+ border-collapse: collapse;
+  width: 100%;
+   border: 0px  solid white;
+    
+}
+#blank_row
+{
+  border: 0px  solid white;
+  text-align:left; 
+  vertical-align:bottom;
+    
+}
+#blank_td
+{
+  border: 0px  solid white;
+  text-align:left; 
+  vertical-align:bottom;
+  width:25%
+    
+}
+
+#blank_tdmid
+{
+  border: 0px  solid white;
+  text-align:middle; 
+  vertical-align:middle;
+  width:50%;
+}
+#border_td
+{
+  border: 1px  solid black;
+  text-align:left; 
+  vertical-align:bottom;
+  width:25%
+    
+}
+#border_tdmid
+{
+  border: 1px  solid black;
+  text-align:left; 
+  vertical-align:bottom;
+  width:50%;
+}
+td
+{
+  vertical-align:top;  
+}
+#item_description
+{
+  border: 1px  solid black;
+  text-align:left; 
+  vertical-align:bottom;
+  width:40%;
+}
+#total
+{
+  border: 1px  solid black;
+  text-align:center; 
+  vertical-align:bottom;
+  width:40%;
+}
+#fifteen
+{
+   border: 1px  solid black;
+  text-align:left; 
+  width:15%;   
+    
+}
+#ten
+{
+   border: 1px  solid black;
+  text-align:left; 
+  width:10%;   
+    
+}
+#purpose
+{
+   border: 1px  solid black;
+  text-align:left;  
+    
+}
+
+.float_right {
+  display: inline-block;
+  float: right;
+}

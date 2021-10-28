@@ -1,0 +1,128 @@
+   .table-style {
+                  width: 100%;
+}
+
+
+
+table, th, td {
+  border: 1px  solid black;
+   text-align:center;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tbody>tr>:nth-child(1){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(2){
+
+ width:20%;
+ text-align:center;
+}
+tbody>tr>:nth-child(3){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(4){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(5){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(6){
+
+ width:6.6%;
+ text-align:center;
+}
+
+tbody>tr>:nth-child(7){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(8){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(9){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(10){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(11){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(12){
+
+ width:6.6%;
+ text-align:center;
+}
+tbody>tr>:nth-child(13){
+
+ width:6.6%;
+ text-align:center;
+}
+
+img {
+    
+    float: right;
+    
+}
+#date_info{
+     float:right;
+    text-align:right;
+}
+#wrapper {
+  width:100%;
+  clear:both;
+}
+#first {
+  width:80%;
+  float:left;
+}
+#second {
+  width:10%;
+  float:right;
+}
+#third {
+  width:10%;
+  float:right;
+  text-align:right;
+}
+
+#running_total
+{
+ text-align:right;
+    
+}
+#bottom
+{
+    position: relative;
+    bottom: 0;
+    width: 100%
+    
+}
+#block{
+    width: 24%;
+    display: inline-block;
+}
+#signatories{
+  text-align:center;
+}

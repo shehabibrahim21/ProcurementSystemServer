@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<title>Procurement System</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/menu-requests.css' %}">
+<!--===============================================================================================-->
+
+	{% load static %} 
+	<link rel="icon" type="image/png" href="{% static 'highlight/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+
+
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/util.css' %}">
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/set_price1.css' %}"> 
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/input31.css' %}">
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/incdec1.css' %}">
+
+		
+
+<!--===============================================================================================-->
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+      
+ 
+
+<style>
+	h3 {text-align: center;}
+	</style>		
+
+
+<script>
+
+
+</script>
+
+<div  class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  id = "modal-dialog-id5" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Set Price</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+    
+<div class="table100 ver4 m-b-110" >
+                <table data-vertable="ver4" >
+                    <thead>
+     
+                        <tr class="row100_ppmp1 head">
+               
+                            <th class="column102 column55" >Item Description</th>
+                            <th class="column102 column88" >Set Price</th>
+                            <th class="column102 column88" >Unit</th>						
+                        </tr>
+
+
+                    </thead>
+                    
+                     <tbody class = "tbody1">
+                        {% for item in lst_price %}
+                        
+                        <tr class="row100">
+                        <td class="column102 column55">{{item.1}}</td>
+                        <td class="column102 column77" data-id="{{ item.0 }}" data-type="price"> </td>		
+                       <td class="column102 column77" data-id="{{ item.0 }}" data-type="unit"> </td>	
+                        </tr>
+                       
+                        {% endfor %}
+                             
+                    </tbody>
+                
+                </table>
+
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+	<body>
+  
+
+  
+  <ul class ="nav-navbar-nav">
+  
+  <li id = "menu-nav">  <a href = " "> Files</a></li>
+  
+  <li id = "menu-nav"><a href = " "> Queries</a></li>
+  
+  <li id = "menu-nav"><a href = " "> Utilities</a></li>
+  
+  <li id = "menu-nav"><a href = " "> Help</a></li>
+  </ul>
+  
+  
+  <ul class ="nav-navbar-nav2">
+  
+	<li id = "menu-nav">  <a href = " "> Items</a></li>
+	
+	<li id = "menu-nav"><a href = " "> Category</a></li>
+	
+	<li id = "menu-nav"><a href="{% url 'PPMP:ppmp' parameter=999990%}" value="{{lst_cc}}">PPMP</a></li>
+
+	<li id = "menu-nav"><a href="{% url 'PPMP:app' parameter=999990%}" value="{{lst_cc}}">APP</a></li>
+        <li id = "menu-nav"><a href="{% url 'PPMP:view_pr' parameter=999990%}" value="{{lst_cc}}">View PRs</a></li>
+	
+	<li id = "menu-nav"><a href="{% url 'PPMP:reports' parameter=999990%}" value="{{lst_cc}}">Reports</a></li>
+        
+        <li id = "menu-nav"><a href="{% url 'PPMP:group_items' parameter=999990%}" value="{{lst_cc}}">Group Items</a></li>
+	
+        <li id = "menu-nav"><a href="{% url 'PPMP:create_rfq' parameter=999990%}" value="{{lst_cc}}">Create RFQ</a></li>
+        
+        {% if with_requests %}
+	<li id = "menu-nav" class="requests"><a href="{% url 'PPMP:requests' parameter=999990%}" value="{{lst_cc}}">Requests</a></li>
+	{% endif %}
+        <li id = "menu-nav"><a href="{% url 'PPMP:set_price' parameter=999990%}" value="{{lst_cc}}">Set Price</a></li>
+        
+	</ul>
+	{% load static %} 
+	<script src="{% static 'highlight/test/mainmodal7.js' %}"></script>
+
+
+
+<!--===============================================================================================-->
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/bootstrap/js/popper.js' %}"></script>
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	
+{% load static %} 
+<script src="{% static 'highlight/test/main4.js' %}"></script>
+
+		
+
+</body>
+</html>
+{% block custom_js %}
+    <script>
+        $(document).ready(function(){
+            $(document).on("dblclick",".column102.column77",function(){
+                var value=$(this).text();
+                var data_type=$(this).data("type");
+                var input_type="text";
+
+                var input="<input type='"+input_type+"' class='input-data' value='"+value+"' class='form-control'>";
+                $(this).html(input);
+                $(this).removeClass(".column102.column77")
+            });
+
+            $(document).on("blur",".input-data",function(){
+                var value=$(this).val();
+                var td=$(this).parent("td");
+                $(this).remove();
+                td.html(value);
+                td.addClass(".column102.column77");
+                var type=td.data("type");
+                sendToServer(td.data("id"),value,type);
+            });
+            $(document).on("keypress",".input-data",function(e){
+                var key=e.which;
+                if(key==13){
+                    console.log("test")
+                    var value=$(this).val();
+                    var td=$(this).parent("td");
+                    $(this).remove();
+                    td.html(value);
+                    td.addClass(".column102.column77");
+                   var type=td.data("type");
+                   sendToServer(td.data("id"),value,type);
+                }
+            });
+
+            function sendToServer(id,value,type){
+                console.log(id);
+                console.log(value);
+                console.log(type);
+                $.ajax({
+                    url:"http://localhost:8000/saveprice/",
+                    type:"POST",
+                    data:{id:id,type:type,value:value},
+                })
+                .done(function(response){
+                    console.log(response);
+                })
+                .fail(function(){
+                   console.log("Error Occured");
+                });
+
+            }
+        });
+    </script>
+{% endblock custom_js %}

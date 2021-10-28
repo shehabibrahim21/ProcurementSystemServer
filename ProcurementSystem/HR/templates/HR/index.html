@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<title>Procurement System</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	{% load static %} 
+	<link rel="icon" type="image/png" href="{% static 'highlight/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+
+
+
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/util.css' %}">
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/main1.css' %}">
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/input7.css' %}">
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'highlight/css/incdec1.css' %}">
+
+
+<!--===============================================================================================-->
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+
+	
+
+ <!----modal starts here--->
+<div id="modal" class="modal fade" role='dialog'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><a name = generic id = generic></a> Specifications</h4>
+            </div>
+            <div class="modal-body" id= "modal-body">
+		<table>
+
+
+		<tr>
+		<td><a name = specs1 id = specs1></a></td>
+		</tr>
+		<tr>
+		<td><a name = specs2 id = specs2></a></td>
+		</tr>
+		<tr>
+		<td><a name = specs3 id = specs3></a></td>
+		</tr>
+		<tr>
+		<td><a name = specs4 id = specs4></a></td>
+		</tr>
+		<tr>
+		<td><a name = specs5 id = specs5></a></td>
+		</tr>
+
+	
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+<!--Modal ends here--->
+
+
+
+<body>		
+ 
+		{% csrf_token %}
+		<script>
+			var items_specs = "{{specifications}}";
+		</script>
+
+
+	<div class="limiter">
+		<div class="container-table100">
+			{% block content %}
+			  <form method="post" autocomplete="off" >
+				{% csrf_token %}
+				<div class="autocomplete" style="width:300px;">
+				{{ form }}
+				</div>
+  			<div class="form-group">
+						
+  				<input type="submit" value="Submit">
+  					</div>
+  				</form> 
+			{% endblock %}
+
+			<div class="wrap-table100">
+		
+
+				<div class="table100 ver4 m-b-110">
+					<table data-vertable="ver4">
+						<thead>
+							<tr class="row100 head">
+								<th class="column100 column2" data-column="column2">Code</th>
+								<th class="column100 column3" data-column="column3">Name</th>
+								<th class="column100 column4" data-column="column4">Allow Add/ Edit</th>
+								<th class="column100 column2" data-column="column2">Code</th>
+								<th class="column100 column3" data-column="column3">Name</th>
+								<th class="column100 column4" data-column="column4">Allow Add/ Edit</th>
+							</tr>
+						</thead>
+						<tbody class = "tbody1">
+							{% for item in lst_items %}
+
+							<tr class="row100">
+							
+								<td class="column100 column2" data-column="column2"> 
+									<a data-toggle="modal" class="clickThis" data-id="{{ item}}" href="room.html#modal">
+									{{ item.0}}</a></td>
+								<td class="column100 column3" data-column="column3">{{ item.1}}</td>
+								<td class="column100 column4" data-column="column4">{{ item.2}}	</td>
+								<td class="column100 column3" data-column="column3">{{ item.3}}</td>
+								<td class="column100 column4" data-column="column4">{{ item.4}}	</td>
+								<td class="column100 column3" data-column="column3">{{ item.5}}</td>
+							</tr>
+
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+
+			
+			</div>
+		</div>
+	</div>
+{% if successful_submit %}
+
+
+<!--- Another Modal for Submit Button-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Confirm Submission</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  Original Input : {{raw_data}}
+		  <br>
+		  Cleaned Input: {{clean_data}}
+		  <br>
+		  {% if tup == False %}
+			Input given not found in the item database!
+		  {% else %}
+			<br>
+
+			Input found in the item database!
+			<br>
+			<br>
+			Generic Name :  <strong>{{ gnrc }}</strong>
+			<br>
+			Itemcode :  <strong>{{ itc }}</strong>
+			<br>
+			Price :  <strong>{{ prc }}</strong>
+			<br>
+			Unit : <strong>{{ unt }}</strong>
+			<br>
+			Account Code : <strong> {{ acc}}</strong>
+
+			{% endif %}
+
+
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-success delete" data-dismiss="modal" data-toggle="modal"  href="#confirmModal">  Confirm</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <!--Modal ends here--->
+
+
+  <!---Third Modal-->
+
+  <div class="modal fade" id="confirmModal"  tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Select Number of Units for <br> {{clean_data}}</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+
+			<table data-vertable="ver4">
+				<thead>
+					<tr class="row100 head">
+						<th class="column100 column2" data-column="column2">
+
+							<form id = "incDec">
+								<div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+								<input type="number" id="number" value="1" />
+					
+								<div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+							  </form>
+							  
+
+						</th>
+						
+						<th class="column100 column3" data-column="column3">Price per {{unt}} : {{prc}} </th>
+							<input type="hidden" id="number1" value= {{prc}} />
+						
+						
+						<th class="column100 column4" data-column="column4">Total Amount : 
+						
+								<input type="number" id="number2" value= {{prc}} />
+							
+							</th>
+					</tr>
+				</thead>
+
+			</table>
+
+  
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-success delete">Submit</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<!---Modal ends here-->
+
+{% load static %} 
+<script src="{% static 'highlight/test/submit.js' %}"></script>
+{% endif %}
+
+
+	{% load static %} 
+	<script src="{% static 'highlight/test/incdec.js' %}"></script>
+	{% load static %} 
+	<script src="{% static 'highlight/test/autocomplete4.js' %}"></script>
+
+
+<!--===============================================================================================-->
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/bootstrap/js/popper.js' %}"></script>
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	{% load static %} 
+	<script src="{% static 'highlight/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	
+{% load static %} 
+<script src="{% static 'highlight/test/main4.js' %}"></script>
+
+
+</body>
+</html>
